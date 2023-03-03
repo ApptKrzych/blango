@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     posts = Post.objects.filter(published_at__lte=timezone.now())
-    logger.debug('Got %s posts', len(posts))
+    logger.debug("Got %d posts", len(posts))
     return render(request, "blog/index.html", {"posts": posts})
 
 
