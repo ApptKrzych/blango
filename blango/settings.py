@@ -47,6 +47,7 @@ class Dev(Configuration):
         "crispy_forms",
         "crispy_bootstrap5",
         "blog",
+        "debug_toolbar",
     ]
 
     X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
@@ -58,6 +59,7 @@ class Dev(Configuration):
     SESSION_COOKIE_SAMESITE = 'None'
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -191,6 +193,8 @@ class Dev(Configuration):
       'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
       'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     ]
+
+    INTERNAL_IPS = ["192.168.10.93"]
 
 
 class Prod(Dev):
