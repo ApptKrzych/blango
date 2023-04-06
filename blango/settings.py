@@ -59,7 +59,11 @@ class Dev(Configuration):
         'rest_framework.authtoken',
         'drf_yasg',
         'django_filters',
+        'versatileimagefield',
     ]
+
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
 
     X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
     CSRF_COOKIE_SAMESITE = None
